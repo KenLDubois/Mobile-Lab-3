@@ -30,7 +30,9 @@
                        DisplayMemberPath="Type" Margin="0,0,0,6" PlaceholderText=" - All Types" 
                           SelectionChanged="ArtTypeCombo_SelectionChanged"/>
             </StackPanel>
-            <GridView Name="patientList" Margin="30,0,0,0" Grid.Row="1" >
+            <GridView Name="patientList" Margin="30,0,0,0" Grid.Row="1"
+                      ItemClick="artworkGridView_ItemClick"
+                      IsItemClickEnabled="True">
                 <GridView.ItemTemplate>
                     <DataTemplate  x:DataType="data:Artwork">
                         <StackPanel Width="300">

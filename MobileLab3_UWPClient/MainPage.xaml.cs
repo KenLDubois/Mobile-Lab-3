@@ -135,6 +135,12 @@ namespace MobileLab3_UWPClient
             showArtwork(selArtType?.ID);
         }
 
+        private void artworkGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frame.Navigate(typeof(ArtworkDetailPage), (Artwork)e.ClickedItem);
+        }
+
+
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             fillDropDown();
