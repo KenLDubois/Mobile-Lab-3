@@ -49,7 +49,7 @@ namespace MobileLab3_APIHost.Controllers
             return Ok(artwork);
         }
 
-        // GET: api/ArtworksByType
+        // GET: api/Artworks/ArtworksByType
         [HttpGet("ArtworksByType/{id}")]
         public IEnumerable<Artwork> GetArtworksByType([FromRoute] int id)
         {
