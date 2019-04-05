@@ -95,6 +95,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ArtworkDetailPage.xaml.cs">
+      <DependentUpon>ArtworkDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ByteToStringConverter.cs" />
+    <Compile Include="Converters\DateTimeToOffsetConverter.cs" />
     <Compile Include="DAL\ArtTypeRepository.cs" />
     <Compile Include="DAL\ArtworkRepository.cs" />
     <Compile Include="DAL\IArtTypeRepository.cs" />
@@ -146,9 +151,7 @@
       <Version>6.1.5</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

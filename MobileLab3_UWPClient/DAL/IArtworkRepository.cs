@@ -12,5 +12,8 @@ namespace MobileLab3_UWPClient.DAL
         Task<List<Artwork>> GetArtworks();
         Task<Artwork> GetArtwork(int ID);
         Task<List<Artwork>> GetArtworksByArtType(int ArtTypeID);
+        Task AddArtwork(Artwork artToAdd);
+        Task UpdateArtwork(Artwork artToUpdate);
+        Task DeleteArtwork(Artwork artToDelete);
     }
 }

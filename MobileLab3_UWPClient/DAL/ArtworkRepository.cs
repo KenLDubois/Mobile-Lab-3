@@ -62,5 +62,35 @@ namespace MobileLab3_UWPClient.DAL
                 return new List<Artwork>();
             }
         }
+
+        public async Task AddArtwork(Artwork artToAdd)
+        {
+            var response = await client.PostAsJsonAsync("/api/Artworks", artToAdd);
+            if (!response.IsSuccessStatusCode)
+            {
+                var ex = Jeeves.CreateApiException(response);
+                throw ex;
+            }
+        }
+
+        public async Task UpdateArtwork(Artwork artToUpdate)
+        {
+            var response = await client.PutAsJsonAsync($"/api/Artworks{artToUpdate.ID}", artToUpdate);
+            if (!response.IsSuccessStatusCode)
+            {
+                var ex = Jeeves.CreateApiException(response);
+                throw ex;
+            }
+        }
+
+        public async Task DeleteArtwork(Artwork artToDelete)
+        {
+            var response = await client.DeleteAsync($"/api/Artworks{artToDelete.ID}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var ex = Jeeves.CreateApiException(response);
+                throw ex;
+            }
+        }
     }
 }
