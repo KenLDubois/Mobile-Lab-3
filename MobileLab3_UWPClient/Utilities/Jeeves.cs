@@ -13,7 +13,7 @@ namespace MobileLab3_UWPClient.Utilities
     {
         public static Uri DBUri = new Uri("http://localhost:56156//");
 
-        //public static Uri DBUri = new Uri("https://nccorewebapi.azurewebsites.net//");
+        // public static Uri DBUri = new Uri("https://nccorewebapi.azurewebsites.net//");
 
         internal async static void ShowMessage(string strTitle, string Msg)
         {

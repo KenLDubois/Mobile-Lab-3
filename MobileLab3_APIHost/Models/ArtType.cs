@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace MobileLab3_APIHost.Models
 {
-    [DataContract(IsReference = true)]
+    [DataContract]
     public class ArtType
     {
-        public ArtType()
-        {
-            this.Artworks = new HashSet<Artwork>();
-        }
         [DataMember]
         public int ID { get; set; }
 

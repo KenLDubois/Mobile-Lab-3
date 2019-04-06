@@ -12,7 +12,7 @@
 
     <Page.Resources>
         <Converters:DateTimeToOffsetConverter x:Key="DateTimeToOffsetConverter"/>
-        <Converters:ByteToStringConverter x:Key="ByteToStringConverter"/>
+        <Converters:DecimalToStringConverter x:Key="DecimalToStringConverter"/>
     </Page.Resources>
 
     <Grid x:Name="LayoutRoot">
@@ -44,11 +44,11 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,0"
-                           VerticalAlignment="Center" Name="NameTextBlock" Text="First Name" />
+                           VerticalAlignment="Center" Name="NameTextBlock" Text="Name" />
                 <TextBox Grid.Row="0" Grid.Column="1" Height="24" Name="NameTextBox" 
                          MaxLength="30" InputScope="Text" Text="{x:Bind view.Name,Mode=TwoWay}" AcceptsReturn="False" />
 
-                <TextBlock Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Left"  Margin="3,0,0,0"
+                <TextBlock Grid.Row="2" Grid.Column="0"  HorizontalAlignment="Left"  Margin="3,0,0,0"
                            VerticalAlignment="Center" Name="DescriptionTextBlock" Text="Description" />
                 
                 <TextBox Grid.Row="2" Grid.Column="1" Height="24" Name="DescriptionTextBox" 
@@ -64,7 +64,7 @@
                 <TextBlock Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Left"  Margin="3,0,0,0"
                            VerticalAlignment="Center" Name="ValueTextBlock" Text="Value" />
                 <TextBox Grid.Row="4" Grid.Column="1" Height="24" Name="ValueTextBox" 
-                         MaxLength="50"  Text="{x:Bind view.Value, Converter={StaticResource ByteToStringConverter}, Mode=TwoWay}" AcceptsReturn="False" InputScope="Number" />
+                          Text="{x:Bind  view.Value, Converter={StaticResource DecimalToStringConverter}, Mode=TwoWay}" AcceptsReturn="False" InputScope="Number" />
                 
                 <CalendarDatePicker Header="Finished" Grid.Column="1" Grid.Row="5"  Date="{x:Bind view.Finished, Converter={StaticResource DateTimeToOffsetConverter}, Mode=TwoWay}"
                                     HorizontalAlignment="Left" VerticalAlignment="Top"  />

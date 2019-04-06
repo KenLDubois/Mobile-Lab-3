@@ -68,7 +68,7 @@ namespace MobileLab3_UWPClient
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            try
+            try 
             {
                 view.ArtType = null;
                 ArtworkRepository er = new ArtworkRepository();

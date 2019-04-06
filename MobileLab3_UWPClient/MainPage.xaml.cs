@@ -146,5 +146,18 @@ namespace MobileLab3_UWPClient
             fillDropDown();
         }
 
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            //Note: I had to add this bit of code so I could set an
+            //initial value to StartDate when I switched from using
+            //Binding to x:Bind in the Details page!  Shows one way 
+            //that the new x:Bind is limited in some ways.
+            Artwork newArt = new Artwork();
+            newArt.Finished = DateTime.Now;
+
+            // Navigate to the detail page
+            Frame.Navigate(typeof(ArtworkDetailPage), newArt);
+        }
+
     }
 }

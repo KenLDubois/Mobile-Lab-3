@@ -42,6 +42,7 @@ namespace MobileLab3_APIHost.Models
 
         [Range(1, int.MaxValue, ErrorMessage = "Please identify the Type of art.")]
         public int ArtTypeID { get; set; }
+
         public virtual ArtType ArtType { get; set; }
 
         [Timestamp]

@@ -76,20 +76,34 @@ namespace MobileLab3_APIHost.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                return Ok(artwork);
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!ArtworkExists(id))
                 {
-                    return NotFound();
+                    ModelState.AddModelError("", "Concurrency Error: Artwork has been Removed.");
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    throw;
+                    ModelState.AddModelError("", "Concurrency Error: Artwork has been updated by another user.  Cancel and try editing the record again.");
+                    return BadRequest(ModelState);
                 }
             }
-
-            return NoContent();
+            catch (DbUpdateException dex)
+            {
+                if (dex.InnerException.Message.Contains("IX_"))
+                {
+                    ModelState.AddModelError("", "Unable to save changes: Duplicate Artwork Name.");
+                    return BadRequest(ModelState);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Unable to save changes to the database. Try again, and if the problem persists see your system administrator.");
+                    return BadRequest(ModelState);
+                }
+            }
         }
 
         // POST: api/Artworks
@@ -102,9 +116,24 @@ namespace MobileLab3_APIHost.Controllers
             }
 
             _context.Artworks.Add(artwork);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetArtwork", new { id = artwork.ID }, artwork);
+            try
+            {
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetArtwork", new { id = artwork.ID }, artwork);
+            }
+            catch (DbUpdateException dex)
+            {
+                if (dex.InnerException.Message.Contains("IX_"))
+                {
+                    ModelState.AddModelError("", "Unable to save: Duplicate Artwork Name.");
+                    return BadRequest(ModelState);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Unable to save changes to the database. Try again, and if the problem persists see your system administrator.");
+                    return BadRequest(ModelState);
+                }
+            }
         }
 
         // DELETE: api/Artworks/5
@@ -117,15 +146,26 @@ namespace MobileLab3_APIHost.Controllers
             }
 
             var artwork = await _context.Artworks.FindAsync(id);
+
             if (artwork == null)
             {
-                return NotFound();
+                ModelState.AddModelError("", "Delete Error: Artwork has already been Removed.");
+
             }
-
-            _context.Artworks.Remove(artwork);
-            await _context.SaveChangesAsync();
-
-            return Ok(artwork);
+            else
+            {
+                try
+                {
+                    _context.Artworks.Remove(artwork);
+                    await _context.SaveChangesAsync();
+                    return Ok(artwork);
+                }
+                catch (DbUpdateException)
+                {
+                    ModelState.AddModelError("", "Delete Error: Unable to delete Artwork.");
+                }
+            }
+            return BadRequest(ModelState);
         }
 
         private bool ArtworkExists(int id)

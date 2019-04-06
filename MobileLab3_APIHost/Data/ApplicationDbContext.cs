@@ -20,9 +20,18 @@ namespace MobileLab3_APIHost.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Artwork>()
+            //    .HasIndex(a => new { a.ArtTypeID, a.Name })
+            //    .IsUnique();
+
             modelBuilder.Entity<Artwork>()
-                .HasIndex(a => new { a.ArtTypeID, a.Name })
+                .HasIndex(a => a.Name)
                 .IsUnique();
+
+            modelBuilder.Entity<ArtType>()
+                .HasMany(at => at.Artworks)
+                .WithOne(a => a.ArtType)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
 

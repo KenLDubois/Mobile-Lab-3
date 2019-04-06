@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Converters\ByteToStringConverter.cs" />
     <Compile Include="Converters\DateTimeToOffsetConverter.cs" />
+    <Compile Include="Converters\DecimalToStringConverter.cs" />
     <Compile Include="DAL\ArtTypeRepository.cs" />
     <Compile Include="DAL\ArtworkRepository.cs" />
     <Compile Include="DAL\IArtTypeRepository.cs" />

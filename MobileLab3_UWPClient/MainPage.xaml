@@ -47,10 +47,10 @@
         </Grid>
         <ProgressRing x:Name="progRing" Grid.Row="1" Width="60" Height="60" />
         <RelativePanel Grid.Row="2">
-            <!--<Button x:Name="btnRefresh" Content="Refresh" RelativePanel.AlignLeftWithPanel="False"
+            <Button x:Name="btnRefresh" Content="Refresh" RelativePanel.AlignLeftWithPanel="False"
                     Click="btnRefresh_Click" Margin="6,6,6,6" />
-            <Button x:Name="btnAdd" Content="Add Patient" RelativePanel.AlignHorizontalCenterWithPanel="True"
-                    Click="btnAdd_Click" Margin="6,6,6,6" />-->
+            <Button x:Name="btnAdd" Content="Add Artwork" RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    Click="btnAdd_Click" Margin="6,6,6,6" />
         </RelativePanel>
     </Grid>
 </Page>

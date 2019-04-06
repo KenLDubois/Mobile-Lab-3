@@ -75,7 +75,7 @@ namespace MobileLab3_UWPClient.DAL
 
         public async Task UpdateArtwork(Artwork artToUpdate)
         {
-            var response = await client.PutAsJsonAsync($"/api/Artworks{artToUpdate.ID}", artToUpdate);
+            var response = await client.PutAsJsonAsync($"/api/Artworks/{artToUpdate.ID}", artToUpdate);
             if (!response.IsSuccessStatusCode)
             {
                 var ex = Jeeves.CreateApiException(response);
@@ -85,7 +85,7 @@ namespace MobileLab3_UWPClient.DAL
 
         public async Task DeleteArtwork(Artwork artToDelete)
         {
-            var response = await client.DeleteAsync($"/api/Artworks{artToDelete.ID}");
+            var response = await client.DeleteAsync($"/api/Artworks/{artToDelete.ID}");
             if (!response.IsSuccessStatusCode)
             {
                 var ex = Jeeves.CreateApiException(response);
